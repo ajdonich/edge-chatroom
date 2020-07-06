@@ -32,10 +32,16 @@ This single specification defines all exchanged websockets messages; message con
 |  user  | ->  | COMMENT(name, room)    | ->  | chatroom |
 |  user  | <=  | COMMENT(name, room)    | <=  | chatroom |
 
-**Asynchronous Broadcasts:**
+**Feed Data Broadcast:**
 | Client | <=> | Messages/Actions       | <=> | Service  | 
 | ------ | --- | ---------------------- | --- | -------- |
+|  feed  | ->  | NATS-message(data)     | ->  | chatroom |
 |  user  | <=  | EVENT/EXECUTION(data)  | <=  | chatroom |
+
+**User Disconnect Broadcast:**
+| Client | <=> | Messages/Actions       | <=> | Service  | 
+| ------ | --- | ---------------------- | --- | -------- |
+|  user  |  :  | websocket disconnect   |  -> | chatroom |
 |  user  | <=  | ROOM_STATUS(USEREXIT)  | <=  | chatroom |
 
 ___
