@@ -1,0 +1,36 @@
+DENIED_NAMETAKEN:
+DENIED_ROOMFULL:
+DENIED_BADROOMID:
+    - -1
+    - 95
+    
+FILTERAPPLIED:
+    sport_filter:
+        - "sport = 3"
+        - "sport = 7 OR sport = 1"
+        - "NONE"
+        - "sport = 4 AND match_title NOT LIKE 'Est%%'"
+        - "SAME"
+        - "sport NOT IN (1,2,3,6,7)"
+        - "ALL"
+        
+    execution_filter:
+        - "symbol LIKE '%%DAYTONA%%'"
+        - "symbol LIKE '%%Joe Biden%%' OR market = 'GOLF'"
+        - "market >= 'POLITICS'"
+        - "SAME"
+        - "stateSymbol = 'PA'"
+        - "ALL"
+        - "stateSymbol = 'NY'"
+        - "stateSymbol = 'PA' OR stateSymbol = 'NV'"
+        - "market = 'TRACK&FIELD'"
+
+REJECTED_BADFILTER:
+    sport_filter:
+        - "sport = 'FOOTBALL'"
+        - "sport  AND sport = 1"
+        - "match_title LIKE '%aliquam%'"
+
+    execution_filter:
+        - "stateSymbol == 'PA'"
+        - "sport = 3"

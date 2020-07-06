@@ -1,0 +1,10 @@
+syntax = "proto2";
+
+message execution {
+   required string symbol = 1;
+   required string market = 2;
+   required float price = 3;
+   required float quantity = 4;
+   required int64 executionEpoch = 5;
+   required string stateSymbol = 6;
+}

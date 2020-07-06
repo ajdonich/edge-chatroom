@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  executions:
+    image: wsumfest/execution-feed:v1
+    container_name: executions
+  sports:
+    image: wsumfest/sport-feed:v1
+    container_name: sports
+
+  nats:
+    image: nats:latest
+    container_name: natsbroker
+    ports:
+      - 4222:4222
+  
+  postgreshost:
+    image: ajdonich/chatroom-database:v1
+    container_name: postgresql
+    ports:
+      - 5444:5432
+    env_file:
+      - ./postgres/dbconfig.env
+    # Uncomment for permanent database persistence
+    # volumes:
+    #   - postgressql-data:/var/lib/postgresql/data
+
+  chathost:
+    image: ajdonich/chatroom-service:v1
+    container_name: chatroom
+    depends_on:
+      - 'postgreshost'
+    ports:
+      - 4242:4242
+    env_file:
+      - ./postgres/dbconfig.env
+    environment:
+      NUM_CHATROOMS: 5
+      MAX_NUMUSERS: '[4]' # Can be length: NUM_CHATROOMS, eg. '[4,3,5,4,2]'
+      CONTAINER_HOST: 'chathost'
+      CONTAINER_PORT: 4242
+      NATS_HOST: 'nats'
+      NATS_PORT: 4222
+      EXECUTION_TOPIC: 'execution'
+      EVENT_TOPIC: 'sport_event'
+    # dev repo mount
+    # volumes:
+    #   - ./edgechat:/usr/local/app/edgechat
+
+# Uncomment for permanent database persistence
+# volumes:
+#   postgressql-data:

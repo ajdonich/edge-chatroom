@@ -1,0 +1,12 @@
+name: edge-chatroom
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - pip
+  - python=3.8
+  - websockets
+  - psycopg2
+  - protobuf
+  - lorem
+  - pylint

@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Rooms Status Message",
+  "description": "Status of all chatrooms",
+  "type": "object",
+  "required": [ "msgtype" ],
+  "properties": {
+    "msgtype": {
+      "description": "Message type",
+      "type": "string",
+      "const": "ROOMSTATUS"
+    },
+    "userstatus": {
+      "type": "boolean",
+      "description": "Response status to user join/filter request"
+    },
+    "rooms": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/status" }
+    }
+  },
+  "definitions": {
+    "roomstatus": {
+      "type": "object",
+      "required": [ "roomid", "numusers", "maxusers" ],
+      "properties": {
+        "roomid": {
+          "type": "string",
+          "description": "The name of the vegetable."
+        },
+        "numusers": {
+          "type": "integer",
+          "description": "Current number of users in room."
+        },
+        "maxusers": {
+          "type": "integer",
+          "description": "Maximum allowed users in room."
+        }
+      }
+    }
+  }
+}
+

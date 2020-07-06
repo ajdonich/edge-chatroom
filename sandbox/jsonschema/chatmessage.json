@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Chat Message",
+  "description": "Chatroom comment",
+  "type": "object",
+  "required": [ "msgtype", "username", "roomid", "comment" ],
+  "properties": {
+    "msgtype": {
+      "description": "Message type",
+      "type": "string",
+      "const": "COMMENT"
+    },
+    "username": {
+      "description": "The client username",
+      "type": "string"
+    },
+    "roomid": {
+      "description": "Room ID number",
+      "type": "integer"
+    },
+    "comment": {
+      "description": "Comment text",
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Sport Message",
+  "description": "Feed Produced Sport Message",
+  "type": "object",
+  "required": [ "msgtype", "sport", "match_title", "data_event" ],
+  "properties": {
+    "msgtype": {
+      "description": "Message type",
+      "type": "string",
+      "const": "SPORT"
+    },
+    "sport": {
+      "description": "The sport name/type",
+      "type": "string",
+      "enum": ["BASEBALL", "BASKETBALL", "FOOTBALL", "BOXING", "GOLF", "NASCAR", "TENNIS"]
+    },
+    "match_title": {
+      "description": "The title of the match/event",
+      "type": "string"
+    },
+    "data_event": {
+      "description": "Misc event data",
+      "type": "string"
+    }
+  }
+}

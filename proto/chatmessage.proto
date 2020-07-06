@@ -1,0 +1,45 @@
+syntax = "proto2";
+import "proto/event.proto";
+import "proto/execution.proto";
+
+enum msgtype {
+  ROOM_STATUS = 1;
+  JOIN_REQ = 2;
+  COMMENT = 3;
+  FILTER = 4;
+  EVENT = 5;
+  EXECUTION = 6;
+}
+
+message roomstatus {
+  required int32 roomid = 1;
+  required uint32 maxusers = 2;
+  repeated string currusers = 3;
+}
+
+message chatmessage {
+    required msgtype mtype = 1;
+    
+    // ROOM_STATUS
+    optional string userstatus = 2;
+    optional uint32 numrooms = 3;
+    repeated roomstatus rooms = 4;
+
+    // JOIN_REQ/COMMENT
+    optional string user = 5;
+    optional int32 roomid = 6;
+    optional string comment = 7;
+    
+    // Note: FILTER is SQL WHERE <clauses>, "NONE" to filter nothing out, "ALL"
+    // to filter everything out, or "SAME" to leave existing filter unchanged.
+    // For example: sport_filter = "sport = 1 OR match_title = 'LAKERS vs CELTICS'"
+    // See FILTER_TEST in edgechat/clientsimulator.py in repo for further examples.
+
+    // FILTER
+    optional string sport_filter = 8 [default = "SAME"];
+    optional string execution_filter = 9 [default = "SAME"];
+    
+    // EVENT/EXECUTION
+    optional event eventmsg = 10;
+    optional execution execmsg = 11;
+}

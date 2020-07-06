@@ -1,0 +1,15 @@
+# Dev CM files
+Dockerfile
+postgres/Dockerfile
+docker-compose.yml
+edge-swe-challenge.yml
+
+# Hidden files/dirs
+*/__pycache__
+.*
+
+# Dev files/dirs
+clientsim
+jsonschema
+gen
+sandbox

@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Execution Message",
+  "description": "Feed Produced Execution Message",
+  "type": "object",
+  "required": [ "msgtype", "symbol", "market", "price", "quantity", "executionEpoch", "stateSymbol" ],
+  "properties": {
+    "msgtype": {
+      "description": "Message type",
+      "type": "string",
+      "const": "EXECUTION"
+    },
+    "symbol": {
+      "description": "Call symbol",
+      "type": "string"
+    },
+    "market": {
+      "description": "Trading market",
+      "type": "string"
+    },
+    "price": {
+      "description": "Price per contract",
+      "type": "number"
+    },
+    "quantity": {
+      "description": "Number of contracts",
+      "type": "number"
+    },
+    "executionEpoch": {
+      "description": "Execution time tag",
+      "type": "integer"
+    },
+    "stateSymbol": {
+      "description": "The sport name/type",
+      "type": "string"
+    }
+  }
+}
+

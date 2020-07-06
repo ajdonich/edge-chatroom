@@ -1,0 +1,18 @@
+syntax = "proto2";
+
+enum sport {
+  BASEBALL = 1;
+  BASKETBALL = 2;
+  FOOTBALL = 3;
+  BOXING = 4;
+  GOLF = 5;
+  NASCAR = 6;
+  TENNIS = 7;
+}
+
+
+message event {
+  required sport sport = 1;
+  required string match_title = 2;
+  required string data_event = 3;
+}

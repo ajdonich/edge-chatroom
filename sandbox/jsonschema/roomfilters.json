@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Room Filter Request",
+  "description": "Room filter preference settings",
+  "type": "object",
+  "required": [ "msgtype", "username", "roomid" ],
+  "properties": {
+    "msgtype": {
+      "description": "Message type",
+      "type": "string",
+      "const": "FILTER"
+    },
+    "username": {
+      "description": "The client username",
+      "type": "string"
+    },
+    "roomid": {
+      "description": "Room ID number",
+      "type": "integer"
+    },
+    "sportfilter": {
+      "description": "Boolean SQL where clause (excluding 'where') using symbol, market, and/or stateSymbol. Leave blank to clear sport filters",
+      "type": "string"
+    },
+    "executionfilter": {
+      "description": "Boolean SQL where clause (excluding 'where') using sport and/or match_title. Leave blank to clear execution filters",
+      "type": "string"
+    }
+  }
+}

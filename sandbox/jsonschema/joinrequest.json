@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Join Request",
+  "description": "Chatroom join request",
+  "type": "object",
+  "required": [ "msgtype", "username", "roomid" ],
+  "properties": {
+    "msgtype": {
+      "description": "Message type",
+      "type": "string",
+      "const": "JOINREQ"
+    },
+    "username": {
+      "description": "The client username",
+      "type": "string"
+    },
+    "roomid": {
+      "description": "Room ID number",
+      "type": "integer"
+    }
+  }
+}
